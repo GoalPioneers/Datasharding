@@ -1,7 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/code/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/polyfill-php81" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/doctrine/inflector" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/fruitcake/php-cors" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/phpoption/phpoption" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/conditionable" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/macroable" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/collections" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/filesystem" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/session" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/support" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/container" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/pipeline" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/bus" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/events" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/view" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/validation" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/testing" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/database" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/console" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/pagination" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/log" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/queue" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/http" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/hashing" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/encryption" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/config" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/broadcasting" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/illuminate/auth" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/nunomaduro/termwind" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/dragonmantank/cron-expression" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/graham-campbell/result-type" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/psr/simple-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/psr/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/voku/portable-ascii" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/brick/math" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/nikic/fast-route" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/nesbot/carbon" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/ramsey/collection" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/ramsey/uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/vlucas/phpdotenv" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/egulias/email-validator" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/laravel/serializable-closure" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/laravel/lumen-framework" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/laravel/lumen" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/polyfill-php72" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/polyfill-intl-normalizer" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/polyfill-intl-idn" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/http-foundation" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/finder" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/translation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/polyfill-php80" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/var-dumper" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/mime" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/event-dispatcher-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/error-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/http-kernel" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/polyfill-intl-grapheme" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/string" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/service-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/console" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor/symfony/process" />
+      <excludeFolder url="file://$MODULE_DIR$/code/vendor" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
