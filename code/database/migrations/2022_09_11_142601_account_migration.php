@@ -10,12 +10,29 @@
         public function up()
         {
             //
+            Schema::create('accounts',
+                function ( Blueprint $table )
+                {
+                    $table->id();
+                    $table->string( 'username' )->index();
+                    $table->bigInteger( 'email_idx' )->unsigned();
+                    $table->string( 'password' );
+
+                    $table->timestamp( 'created_at' );
+                    $table->timestamp( 'updated_at' );
+
+                    $table->foreign( 'email_idx' )
+                        ->references( 'id' )
+                        ->on( 'person_emails' );
+                }
+            );
         }
 
 
         public function down()
         {
             //
+            Schema::drop( 'accounts' );
         }
     };
 ?>

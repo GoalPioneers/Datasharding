@@ -11,11 +11,10 @@ use Illuminate\Support\Facades\Schema;
         public function up()
         {
             //
-            Schema::create('person_names',
+            Schema::create('person_name_types',
                 function ( Blueprint $table )
                 {
                     $table->id();
-                    $table->bigInteger('type_idx')->unsigned();
                     $table->string( 'content' )->index();
                 }
             );

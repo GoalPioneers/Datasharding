@@ -10,12 +10,20 @@
         public function up()
         {
             //
+            Schema::create('person_emails',
+                function ( Blueprint $table )
+                {
+                    $table->id();
+                    $table->string( 'content' );
+                }
+            );
         }
 
 
         public function down()
         {
             //
+            Schema::drop('person_email');
         }
     };
 ?>
