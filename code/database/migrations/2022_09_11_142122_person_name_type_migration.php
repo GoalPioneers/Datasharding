@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Schema;
 
         public function down()
         {
-            Schema::drop( 'person_name' );
+            Schema::drop( 'person_name_types' );
         }
     };
 ?>

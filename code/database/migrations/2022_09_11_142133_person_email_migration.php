@@ -14,7 +14,9 @@
                 function ( Blueprint $table )
                 {
                     $table->id();
-                    $table->string( 'content' )->unique();
+
+                    $table->string( 'content' )
+                          ->unique();
                 }
             );
         }
@@ -23,7 +25,7 @@
         public function down()
         {
             //
-            Schema::drop('person_email');
+            Schema::drop( 'person_emails' );
         }
     };
 ?>

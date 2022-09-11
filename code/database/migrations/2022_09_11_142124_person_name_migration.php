@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Schema;
                 function ( Blueprint $table )
                 {
                     $table->id();
-                    $table->bigInteger('type_idx')->unsigned();
+                    $table->bigInteger( 'type_idx' )->unsigned();
                     $table->string( 'content' )->unique();
                 }
             );
@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Schema;
 
         public function down()
         {
-            Schema::drop( 'person_name' );
+            Schema::drop( 'person_names' );
         }
     };
 ?>
