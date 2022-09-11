@@ -14,8 +14,14 @@
                 function ( Blueprint $table )
                 {
                     $table->id();
-                    $table->string( 'username' )->index();
-                    $table->bigInteger( 'email_idx' )->unsigned();
+
+                    $table->string( 'username' )
+                          ->index();
+
+                    $table->bigInteger( 'email_idx' )
+                          ->unsigned()
+                          ->index();
+                    
                     $table->string( 'password' );
 
                     $table->timestamp( 'created_at' );
