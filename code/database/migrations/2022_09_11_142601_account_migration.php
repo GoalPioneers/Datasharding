@@ -16,12 +16,12 @@
                     $table->id();
 
                     $table->string( 'username' )
-                          ->index();
+                          ->unique();
 
                     $table->bigInteger( 'email_idx' )
                           ->unsigned()
                           ->index();
-                    
+
                     $table->string( 'password' );
 
                     $table->timestamp( 'created_at' );

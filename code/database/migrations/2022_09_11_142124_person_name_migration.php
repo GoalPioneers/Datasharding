@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Schema;
                 {
                     $table->id();
                     $table->bigInteger('type_idx')->unsigned();
-                    $table->string( 'content' )->index();
+                    $table->string( 'content' )->unique();
                 }
             );
         }

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Schema;
                 function ( Blueprint $table )
                 {
                     $table->id();
-                    $table->string( 'content' )->index();
+                    $table->string( 'content' )->unique();
                 }
             );
         }

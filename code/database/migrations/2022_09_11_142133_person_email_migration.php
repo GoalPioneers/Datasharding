@@ -14,7 +14,7 @@
                 function ( Blueprint $table )
                 {
                     $table->id();
-                    $table->string( 'content' );
+                    $table->string( 'content' )->unique();
                 }
             );
         }
