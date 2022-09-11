@@ -13,9 +13,8 @@
         dirname(__DIR__)
     );
 
-    // $app->withFacades();
-
-    // $app->withEloquent();
+    $app->withFacades();
+    $app->withEloquent();
 
     $app->singleton(
         Illuminate\Contracts\Debug\ExceptionHandler::class,
