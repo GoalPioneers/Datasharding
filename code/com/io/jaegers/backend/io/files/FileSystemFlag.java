@@ -5,5 +5,6 @@ public enum FileSystemFlag
 {
     Required,
     Value,
+    Option,
     None
 }
