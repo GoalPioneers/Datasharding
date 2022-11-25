@@ -10,33 +10,57 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+ *
+ */
 public class LazyTraversal
         implements AlgorithmTraverseType
 {
+    /**
+     *
+     */
     @Override
     public void traverse()
     {
 
     }
 
+    /**
+     *
+     * @param facade
+     */
     @Override
     public void setFacade( TraversalFacade facade )
     {
 
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean isToContinue()
     {
         return false;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean isFacadeNull()
     {
         return false;
     }
 
+
+    /**
+     *
+     * @param args
+     * @throws IOException
+     */
     public static void main( String[] args )
             throws IOException
     {
