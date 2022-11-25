@@ -6,6 +6,8 @@ import com.io.jaegers.backend.io.files.algorithms.BreathFirstTraversal;
 import com.io.jaegers.backend.io.files.algorithms.component.FoundConnector;
 import com.io.jaegers.backend.io.files.algorithms.interfaces.TraversalFacade;
 
+import java.time.LocalTime;
+
 
 public class RedundantOperation
     implements FileSystemOperation
@@ -42,6 +44,7 @@ public class RedundantOperation
     private BreathFirstTraversal traversal = null;
 
     private AlgorithmFacade facade = null;
+    private RedundantResultSet resultSet = null;
 
 
     @Override
@@ -50,10 +53,12 @@ public class RedundantOperation
         if( this.getFacade().isSet() )
         {
             BreathFirstTraversal traversal = this.preparation();
+            RedundantOnFilesFound onFilesFoundEvent = new RedundantOnFilesFound();
+            this.setResultSet( onFilesFoundEvent );
 
             traversal.setConnector(
                     new FoundConnector(
-                            new RedundantOnFilesFound(),
+                            onFilesFoundEvent,
                             new RedundantOperationSettings()
                     )
             );
@@ -86,6 +91,16 @@ public class RedundantOperation
     public void setFacade( AlgorithmFacade facade )
     {
         this.facade = facade;
+    }
+
+    public RedundantResultSet getResultSet()
+    {
+        return resultSet;
+    }
+
+    public void setResultSet( RedundantResultSet resultSet )
+    {
+        this.resultSet = resultSet;
     }
 
     public boolean isTraversalNull()
@@ -150,9 +165,16 @@ public class RedundantOperation
 
     public static void main( String[] args )
     {
-        RedundantOperation operation = new RedundantOperation("C:\\Workspace\\common hardware initiative\\Archive\\dataset");
+        System.out.println( LocalTime.now().toString() );
+        RedundantOperation operation = new RedundantOperation("C:\\Workspace\\common hardware initiative\\Archive");
         operation.execute();
 
+        System.out.println( LocalTime.now().toString() );
 
+        EntryStored[] entries = operation.getResultSet().getResultEntries();
+        FileToHash[] orphans = operation.getResultSet().getResultOrphans();
+
+        System.out.println("Entries Size: " + Integer.toString(entries.length));
+        System.out.println("Orphans Size: " + Integer.toString(orphans.length));
     }
 }

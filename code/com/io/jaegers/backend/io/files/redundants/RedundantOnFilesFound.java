@@ -9,7 +9,8 @@ import java.util.List;
 
 
 public class RedundantOnFilesFound
-    implements FoundInterface
+    implements FoundInterface,
+               RedundantResultSet
 {
     public RedundantOnFilesFound()
     {
@@ -149,5 +150,27 @@ public class RedundantOnFilesFound
     public void setRedundantOrphans(List<FileToHash> redundantOrphans)
     {
         this.redundantOrphans = redundantOrphans;
+    }
+
+    @Override
+    public FileToHash[] getResultOrphans()
+    {
+        int sizeOfOrphans = this.getRedundantOrphans().size();
+
+        FileToHash[] results = new FileToHash[sizeOfOrphans];
+        results = this.getRedundantOrphans().toArray(results);
+
+        return results;
+    }
+
+
+    @Override
+    public EntryStored[] getResultEntries()
+    {
+        int sizeOfEntries = this.getStored().size();
+        EntryStored[] results = new EntryStored[sizeOfEntries];
+        results = this.getStored().toArray(results);
+
+        return results;
     }
 }
