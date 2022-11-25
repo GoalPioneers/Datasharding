@@ -1,5 +1,8 @@
 package com.io.jaegers.backend.io.files.algorithms;
 
+import com.io.jaegers.backend.io.files.algorithms.interfaces.AlgorithmTraverseType;
+import com.io.jaegers.backend.io.files.algorithms.interfaces.TraversalFacade;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,6 +23,12 @@ public class LazyTraversal
     public void setFacade( TraversalFacade facade )
     {
 
+    }
+
+    @Override
+    public boolean isToContinue()
+    {
+        return false;
     }
 
     @Override

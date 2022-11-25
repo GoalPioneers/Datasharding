@@ -1,6 +1,9 @@
 package com.io.jaegers.backend.io.files.algorithms;
 
 
+import com.io.jaegers.backend.io.files.algorithms.interfaces.AlgorithmTraverseType;
+import com.io.jaegers.backend.io.files.algorithms.interfaces.TraversalFacade;
+
 public class DepthFirstTraversal
         implements AlgorithmTraverseType
 {
@@ -26,6 +29,12 @@ public class DepthFirstTraversal
     public TraversalFacade getFacade()
     {
         return facade;
+    }
+
+    @Override
+    public boolean isToContinue()
+    {
+        return false;
     }
 
     @Override
