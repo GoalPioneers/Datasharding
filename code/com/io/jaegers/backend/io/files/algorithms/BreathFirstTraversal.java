@@ -29,8 +29,6 @@ public class BreathFirstTraversal
 
         this.setBuffer( new AlgorithmBuffer() );
         this.setSetting( new DefaultSetting() );
-
-        this.setSetting( new DefaultSetting() );
     }
 
     private static final int zero = 0;

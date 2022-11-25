@@ -1,6 +1,7 @@
 package com.io.jaegers.backend.io.files.algorithms.component;
 
 import com.io.jaegers.backend.io.files.algorithms.interfaces.FoundInterface;
+import com.io.jaegers.backend.io.files.algorithms.interfaces.FoundSettingsInterface;
 
 
 /**
@@ -16,6 +17,12 @@ public class FoundConnector
 
     }
 
+    public FoundConnector( FoundInterface f, FoundSettingsInterface settingsInterface )
+    {
+        this.setFound( f );
+        this.setSettings( settingsInterface );
+    }
+
 
     /**
      *
@@ -23,7 +30,7 @@ public class FoundConnector
      */
     public void callCurrentDirectory( String path )
     {
-        if( this.hasFoundInterface() )
+        if( this.hasFoundInterface() && ( this.getSettings().usesCurrentDirectory() || this.isSettingsNull() ) )
         {
             this.getFound().CurrentDirectory( path );
         }
@@ -35,7 +42,7 @@ public class FoundConnector
      */
     public void callFoundDirectory( String path )
     {
-        if( this.hasFoundInterface() )
+        if( this.hasFoundInterface() && ( this.getSettings().usesDirectories() || this.isSettingsNull() ) )
         {
             this.getFound().FoundDirectory( path );
         }
@@ -47,7 +54,7 @@ public class FoundConnector
      */
     public void callFoundFile( String path )
     {
-        if( this.hasFoundInterface() )
+        if( this.hasFoundInterface() && (this.getSettings().usesFiles() || this.isSettingsNull() ) )
         {
             this.getFound().FoundFile( path );
         }
@@ -55,6 +62,8 @@ public class FoundConnector
 
     // Variables
     private FoundInterface found = null;
+
+    private FoundSettingsInterface settings = null;
 
     /**
      *
@@ -90,5 +99,21 @@ public class FoundConnector
     public boolean hasFoundInterface()
     {
         return this.found != null;
+    }
+
+
+    public FoundSettingsInterface getSettings()
+    {
+        return this.settings;
+    }
+
+    public void setSettings( FoundSettingsInterface settings )
+    {
+        this.settings = settings;
+    }
+
+    public boolean isSettingsNull()
+    {
+        return this.settings == null;
     }
 }
