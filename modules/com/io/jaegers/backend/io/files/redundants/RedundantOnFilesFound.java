@@ -2,6 +2,7 @@ package com.io.jaegers.backend.io.files.redundants;
 
 import com.io.jaegers.backend.io.files.algorithms.interfaces.FoundInterface;
 import com.io.jaegers.backend.io.files.algorithms.interfaces.FoundSettingsInterface;
+import com.io.jaegers.backend.object.CounterObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class RedundantOnFilesFound
     {
         this.setStored( new ArrayList<>() );
         this.setRedundantOrphans( new ArrayList<>() );
+        this.setOptimiseBy( new CounterObject() );
     }
 
     @Override
@@ -27,6 +29,17 @@ public class RedundantOnFilesFound
     @Override
     public void FoundFile( String path )
     {
+        this.getOptimiseBy().increment();
+
+        if( this.getOptimiseBy().isIntegerValueZero(
+                this.getOptimiseBy().modulus(250)
+            )
+          )
+        {
+            this.getStored().sort( new EntryStoredComparator() );
+            this.getOptimiseBy().setValueCounter( 0 );
+        }
+
         //System.out.println("Found File: " + path);
         try
         {
@@ -115,7 +128,10 @@ public class RedundantOnFilesFound
     private static RedundantOperationSettings defaultSettings = null;
 
     private List<FileToHash> redundantOrphans = null;
+
     private List<EntryStored> stored = null;
+
+    private CounterObject optimiseBy = null;
 
     public void setStored( List<EntryStored> stored )
     {
@@ -125,6 +141,16 @@ public class RedundantOnFilesFound
     public List<EntryStored> getStored()
     {
         return this.stored;
+    }
+
+    public CounterObject getOptimiseBy()
+    {
+        return this.optimiseBy;
+    }
+
+    public void setOptimiseBy( CounterObject optimiseBy )
+    {
+        this.optimiseBy = optimiseBy;
     }
 
     public static RedundantOperationSettings getDefaultSettings()

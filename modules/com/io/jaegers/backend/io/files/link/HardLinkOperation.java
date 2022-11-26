@@ -6,6 +6,12 @@ import com.io.jaegers.backend.io.files.FileSystemOperation;
 public class HardLinkOperation
         implements FileSystemOperation
 {
+    public HardLinkOperation()
+    {
+
+    }
+
+
     @Override
     public void execute()
     {

@@ -3,10 +3,12 @@ package com.io.jaegers.backend.io.files.redundants;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 
 public class EntryStored
+        implements Comparable<EntryStored>
 {
     public EntryStored()
     {
@@ -78,5 +80,11 @@ public class EntryStored
     {
         long r = Files.mismatch(A.getFile().toPath(), B.getFile().toPath());
         return (r == -1);
+    }
+
+    @Override
+    public int compareTo( EntryStored o )
+    {
+        return this.getHash().compareTo( o.getHash() );
     }
 }
