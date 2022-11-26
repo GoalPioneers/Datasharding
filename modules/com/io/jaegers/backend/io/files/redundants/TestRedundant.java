@@ -1,7 +1,7 @@
 package com.io.jaegers.backend.io.files.redundants;
 
 import com.io.jaegers.backend.io.files.redundants.objects.EntryStored;
-import com.io.jaegers.backend.object.FileHash;
+import com.io.jaegers.backend.object.HashStoredFile;
 
 import java.time.LocalTime;
 
@@ -16,7 +16,7 @@ public class TestRedundant
         System.out.println( LocalTime.now().toString() );
 
         EntryStored[] entries = operation.getResultSet().getResultEntries();
-        FileHash[] orphans = operation.getResultSet().getResultOrphans();
+        HashStoredFile[] orphans = operation.getResultSet().getResultOrphans();
 
         System.out.println("Entries Size: " + Integer.toString(entries.length));
         System.out.println("Orphans Size: " + Integer.toString(orphans.length));
@@ -26,9 +26,9 @@ public class TestRedundant
             System.out.println( now.getHash() );
 
 
-            for( FileHash f : now.getStored() )
+            for( HashStoredFile f : now.getStored() )
             {
-                System.out.println(f.getFile().getName());
+                System.out.println(f.getStorageSpace().getFile().getName());
             }
 
         }

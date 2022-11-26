@@ -1,6 +1,6 @@
 package com.io.jaegers.backend.io.files.redundants.objects;
 
-import com.io.jaegers.backend.object.FileHash;
+import com.io.jaegers.backend.object.HashStoredFile;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -23,7 +23,7 @@ public class EntryStored
     }
 
     public EntryStored( String hashStr,
-                        FileHash hashFile )
+                        HashStoredFile hashFile )
     {
         this( hashStr );
         this.getStored().add( hashFile );
@@ -31,7 +31,7 @@ public class EntryStored
 
     private String hash = null;
 
-    private List<FileHash> stored = null;
+    private List<HashStoredFile> stored = null;
 
 
     public String getHash()
@@ -44,17 +44,17 @@ public class EntryStored
         this.hash = hash;
     }
 
-    public void setStored( List<FileHash> stored )
+    public void setStored( List<HashStoredFile> stored )
     {
         this.stored = stored;
     }
 
-    public List<FileHash> getStored()
+    public List<HashStoredFile> getStored()
     {
         return this.stored;
     }
 
-    public boolean isInSet( FileHash store )
+    public boolean isInSet( HashStoredFile store )
             throws IOException
     {
         int idx;
@@ -64,7 +64,7 @@ public class EntryStored
              idx < this.getStored().size();
              idx++ )
         {
-            FileHash current = this.getStored().get( idx );
+            HashStoredFile current = this.getStored().get( idx );
 
             if( this.compareFiles( current, store ) )
             {
@@ -76,10 +76,10 @@ public class EntryStored
         return rValue;
     }
 
-    protected boolean compareFiles(FileHash A, FileHash B )
+    protected boolean compareFiles(HashStoredFile A, HashStoredFile B )
             throws IOException
     {
-        long r = Files.mismatch(A.getFile().toPath(), B.getFile().toPath());
+        long r = Files.mismatch(A.getStorageSpace().getFile().toPath(), B.getStorageSpace().getFile().toPath());
         return (r == -1);
     }
 
