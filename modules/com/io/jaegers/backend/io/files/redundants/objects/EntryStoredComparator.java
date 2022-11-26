@@ -1,4 +1,4 @@
-package com.io.jaegers.backend.io.files.redundants;
+package com.io.jaegers.backend.io.files.redundants.objects;
 
 import java.util.Comparator;
 

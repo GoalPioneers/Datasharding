@@ -1,7 +1,12 @@
-package com.io.jaegers.backend.io.files.redundants;
+package com.io.jaegers.backend.io.files.redundants.events;
 
 import com.io.jaegers.backend.io.files.algorithms.interfaces.FoundInterface;
 import com.io.jaegers.backend.io.files.algorithms.interfaces.FoundSettingsInterface;
+import com.io.jaegers.backend.io.files.redundants.objects.RedundantOperationSettings;
+import com.io.jaegers.backend.io.files.redundants.objects.EntryStored;
+import com.io.jaegers.backend.io.files.redundants.objects.EntryStoredComparator;
+import com.io.jaegers.backend.object.FileHash;
+import com.io.jaegers.backend.io.files.redundants.templates.RedundantResultSet;
 import com.io.jaegers.backend.object.CounterObject;
 
 import java.io.IOException;
@@ -11,7 +16,7 @@ import java.util.List;
 
 public class RedundantOnFilesFound
     implements FoundInterface,
-               RedundantResultSet
+        RedundantResultSet
 {
     public RedundantOnFilesFound()
     {
@@ -26,24 +31,27 @@ public class RedundantOnFilesFound
 
     }
 
-    @Override
-    public void FoundFile( String path )
+    protected void optimisation_of_index()
     {
-        this.getOptimiseBy().increment();
-
         if( this.getOptimiseBy().isIntegerValueZero(
                 this.getOptimiseBy().modulus(250)
             )
-          )
+        )
         {
             this.getStored().sort( new EntryStoredComparator() );
             this.getOptimiseBy().setValueCounter( 0 );
         }
+    }
 
-        //System.out.println("Found File: " + path);
+    @Override
+    public void FoundFile( String path )
+    {
+        this.getOptimiseBy().increment();
+        this.optimisation_of_index();
+
         try
         {
-            FileToHash hashGen = new FileToHash( path );
+            FileHash hashGen = new FileHash( path );
             String hashValue = hashGen.convertToHex();
 
             this.IndexFile( hashValue, hashGen );
@@ -56,13 +64,14 @@ public class RedundantOnFilesFound
     }
 
     protected void IndexFile( String hash,
-                              FileToHash toStore )
+                              FileHash toStore )
             throws IOException
     {
         int idx,
             sizeOfEntries;
 
         sizeOfEntries = this.getStored().size();
+
         boolean foundSameEntry = false;
 
         if( sizeOfEntries == 0 )
@@ -84,12 +93,10 @@ public class RedundantOnFilesFound
 
                 if( current.isInSet( toStore ) )
                 {
-                    //System.out.println( "Redundant Found: " + hash );
                     this.foundRedundantOrphan( toStore );
                 }
                 else
                 {
-                    //System.out.println( "Collision Added to List: " + hash );
                     current.getStored().add( toStore );
                 }
 
@@ -99,14 +106,13 @@ public class RedundantOnFilesFound
 
         if( !foundSameEntry )
         {
-            //System.out.println( "Added to Hashmap " + hash );
             this.getStored().add(
                 new EntryStored( hash, toStore )
             );
         }
     }
 
-    protected void foundRedundantOrphan( FileToHash toStore )
+    protected void foundRedundantOrphan( FileHash toStore )
     {
         this.getRedundantOrphans().add( toStore );
     }
@@ -127,11 +133,12 @@ public class RedundantOnFilesFound
     // Variables
     private static RedundantOperationSettings defaultSettings = null;
 
-    private List<FileToHash> redundantOrphans = null;
+    private List<FileHash> redundantOrphans = null;
 
     private List<EntryStored> stored = null;
 
     private CounterObject optimiseBy = null;
+
 
     public void setStored( List<EntryStored> stored )
     {
@@ -168,22 +175,22 @@ public class RedundantOnFilesFound
         RedundantOnFilesFound.defaultSettings = defaultSettings;
     }
 
-    public List<FileToHash> getRedundantOrphans()
+    public List<FileHash> getRedundantOrphans()
     {
-        return redundantOrphans;
+        return this.redundantOrphans;
     }
 
-    public void setRedundantOrphans(List<FileToHash> redundantOrphans)
+    public void setRedundantOrphans( List<FileHash> redundantOrphans )
     {
         this.redundantOrphans = redundantOrphans;
     }
 
     @Override
-    public FileToHash[] getResultOrphans()
+    public FileHash[] getResultOrphans()
     {
         int sizeOfOrphans = this.getRedundantOrphans().size();
 
-        FileToHash[] results = new FileToHash[sizeOfOrphans];
+        FileHash[] results = new FileHash[sizeOfOrphans];
         results = this.getRedundantOrphans().toArray(results);
 
         return results;

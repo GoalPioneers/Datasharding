@@ -2,11 +2,14 @@ package com.io.jaegers.backend.io.files.redundants;
 
 import com.io.jaegers.backend.io.files.FileSystemFlag;
 import com.io.jaegers.backend.io.files.FileSystemOperation;
+
 import com.io.jaegers.backend.io.files.algorithms.BreathFirstTraversal;
 import com.io.jaegers.backend.io.files.algorithms.component.FoundConnector;
 import com.io.jaegers.backend.io.files.algorithms.interfaces.TraversalFacade;
 
-import java.time.LocalTime;
+import com.io.jaegers.backend.io.files.redundants.events.RedundantOnFilesFound;
+import com.io.jaegers.backend.io.files.redundants.objects.RedundantOperationSettings;
+import com.io.jaegers.backend.io.files.redundants.templates.RedundantResultSet;
 
 
 public class RedundantOperation
@@ -44,6 +47,7 @@ public class RedundantOperation
     private BreathFirstTraversal traversal = null;
 
     private AlgorithmFacade facade = null;
+
     private RedundantResultSet resultSet = null;
 
 
@@ -140,6 +144,7 @@ public class RedundantOperation
             this.path = rootPath;
         }
 
+
         @Override
         public String getRootPath()
         {
@@ -161,20 +166,5 @@ public class RedundantOperation
         {
             return super.toString();
         }
-    }
-
-    public static void main( String[] args )
-    {
-        System.out.println( LocalTime.now().toString() );
-        RedundantOperation operation = new RedundantOperation("C:\\Workspace\\common hardware initiative\\Archive");
-        operation.execute();
-
-        System.out.println( LocalTime.now().toString() );
-
-        EntryStored[] entries = operation.getResultSet().getResultEntries();
-        FileToHash[] orphans = operation.getResultSet().getResultOrphans();
-
-        System.out.println("Entries Size: " + Integer.toString(entries.length));
-        System.out.println("Orphans Size: " + Integer.toString(orphans.length));
     }
 }

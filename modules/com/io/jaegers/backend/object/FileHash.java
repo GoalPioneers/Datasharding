@@ -1,14 +1,17 @@
-package com.io.jaegers.backend.io.files.redundants;
+package com.io.jaegers.backend.object;
 
+
+import com.io.jaegers.backend.object.StoredFile;
 
 import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 
-public class FileToHash
+public class FileHash
+    extends StoredFile
 {
-    public FileToHash( String path )
+    public FileHash( String path )
             throws NoSuchAlgorithmException,
                    IOException
     {
@@ -79,7 +82,7 @@ public class FileToHash
 
     public byte[] getHash()
     {
-        return hash;
+        return this.hash;
     }
 
     public void setHash(byte[] hash)

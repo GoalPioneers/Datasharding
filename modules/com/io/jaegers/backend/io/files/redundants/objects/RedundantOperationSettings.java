@@ -1,4 +1,4 @@
-package com.io.jaegers.backend.io.files.redundants;
+package com.io.jaegers.backend.io.files.redundants.objects;
 
 import com.io.jaegers.backend.io.files.algorithms.interfaces.FoundSettingsInterface;
 
